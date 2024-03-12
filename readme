@@ -1,0 +1,5 @@
+This is a proposal of a Knowledge Graph (KG) to represent and helps the maintenance and operation information managed systems for industrial operations. 
+
+The generated KG was developed using well-established standards like the Industrial Data Ontology (IDO), and the Capital Facilities Information Handover Specification (CFIHOS), complemented with the use of other ontologies. 
+
+A prototype of the conceptual KG was implemented, verifying the viability of this for data integration for . The graph resulted contains the main terms that compliant with international semantic standards for operation and maintenance activities data associated with facilities involved in Oil and Gas production. Finally, the KG resulting from this effort can be further extended by incorporating new tools and subdomains in the industrial plants life-cycle.
