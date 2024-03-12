@@ -1,0 +1,1863 @@
+@prefix : <http:/rdl.petrobras/ontology/sap/rdl_v1.0#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix ido: <http://rds.posccaesar.org/ontology/lis14/ont/core/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pav: <http://purl.org/pav/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdl: <http:/rdl.petrobras/ontology/sap/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ottr: <http://ns.ottr.xyz/0.4/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix asset: <http://example.org/noaka-collab/MEG-demo/> .
+@prefix rdlsap: <http:/rdl.petrobras/ontology/sap/rdl_v1.0#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ativo360: <http:/rdl.petrobras/ontology/ativo360#> .
+@base <http:/rdl.petrobras/ontology/sap/rdl_v1.0> .
+
+<http:/rdl.petrobras/ontology/sap/rdl_v1.0> rdf:type owl:Ontology ;
+                                             owl:imports <http://purl.org/net/cartCoord#> ,
+                                                         ido: ,
+                                                         skos: ,
+                                                         <http://www.w3.org/ns/org#> ;
+                                             rdfs:label "MEG Injection asset model demo, for Readi workshop 2022-02-18" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.obolibrary.org/obo/IAO_0000114
+<http://purl.obolibrary.org/obo/IAO_0000114> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000115
+<http://purl.obolibrary.org/obo/IAO_0000115> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000116
+<http://purl.obolibrary.org/obo/IAO_0000116> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000117
+<http://purl.obolibrary.org/obo/IAO_0000117> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://purl.obolibrary.org/obo/IAO_0000136
+<http://purl.obolibrary.org/obo/IAO_0000136> rdf:type owl:ObjectProperty ;
+                                             rdfs:label "is about"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000142
+<http://purl.obolibrary.org/obo/IAO_0000142> rdf:type owl:ObjectProperty ;
+                                             rdfs:subPropertyOf <http://purl.obolibrary.org/obo/IAO_0000136> ;
+                                             owl:inverseOf <http://purl.obolibrary.org/obo/IAO_0000143> ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000114> <http://purl.obolibrary.org/obo/IAO_0000125> ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000115> "An information artifact IA mentions an entity E exactly when it has a component/part that denotes E"@en ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000116> "7/6/2009 Alan Ruttenberg. P4 RC1 munges our GCI so remove it for now: mentions some entity equivalentTo has_part some ('generically denotes' some entity)"@en ,
+                                                                                          "7/6/2009 Alan Ruttenberg: Add this relation following conversation with Jonathan Rees that N&S GCI for is_about was too strong. Really it was simply sufficient. To effect this change we introduce this relation, which is subproperty of is_about, and have previous GCI use this relation \"mentions\" in it's (logical) definition"@en ;
+                                             <http://purl.obolibrary.org/obo/IAO_0000117> "PERSON: Jonathan Rees"@en ,
+                                                                                          "Person: Alan Ruttenberg"@en ;
+                                             rdfs:label "mentions"@en .
+
+
+###  http://purl.obolibrary.org/obo/IAO_0000143
+<http://purl.obolibrary.org/obo/IAO_0000143> rdf:type owl:ObjectProperty ;
+                                             rdfs:label "mentioned by"@en .
+
+
+###  http://purl.org/net/cartCoord#hasPlacement
+<http://purl.org/net/cartCoord#hasPlacement> rdf:type owl:ObjectProperty .
+
+
+###  http://rds.posccaesar.org/ontology/lis14/rdl/hasInstalled
+<http://rds.posccaesar.org/ontology/lis14/rdl/hasInstalled> rdfs:subPropertyOf rdlsap:has .
+
+
+###  http://rds.posccaesar.org/ontology/lis14/rdl/partOf
+<http://rds.posccaesar.org/ontology/lis14/rdl/partOf> rdf:type owl:ObjectProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/ativo360#isInScopeOf
+ativo360:isInScopeOf rdf:type owl:ObjectProperty ;
+                     rdfs:range <http://rds.posccaesar.org/ontology/lis14/rdl/SoftwareArtefact> .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#EnvironmentSeverity
+rdlsap:EnvironmentSeverity rdf:type owl:ObjectProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#ProductionSeverity
+rdlsap:ProductionSeverity rdf:type owl:ObjectProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#SecuritySeverity
+rdlsap:SecuritySeverity rdf:type owl:ObjectProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#actualDurationOfService
+rdlsap:actualDurationOfService rdf:type owl:ObjectProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#attendedBy
+rdlsap:attendedBy rdf:type owl:ObjectProperty ;
+                  owl:inverseOf rdlsap:attends .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#attends
+rdlsap:attends rdf:type owl:ObjectProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#belongsTo
+rdlsap:belongsTo rdf:type owl:ObjectProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#boundedBy
+rdlsap:boundedBy rdf:type owl:ObjectProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#cycleTime
+rdlsap:cycleTime rdf:type owl:ObjectProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#degreeOfCriticality
+rdlsap:degreeOfCriticality rdf:type owl:ObjectProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#durationOfScheduledStop
+rdlsap:durationOfScheduledStop rdf:type owl:ObjectProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#has
+rdlsap:has rdf:type owl:ObjectProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasAction
+rdlsap:hasAction rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf rdlsap:has .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasCategory
+rdlsap:hasCategory rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf rdlsap:has .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasCause
+rdlsap:hasCause rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf rdlsap:has .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasClass
+rdlsap:hasClass rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf rdlsap:has .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasDelayedConfirmationTolerance
+rdlsap:hasDelayedConfirmationTolerance rdf:type owl:ObjectProperty ;
+                                       rdfs:subPropertyOf rdlsap:has .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasDelayedDisplacementFactor
+rdlsap:hasDelayedDisplacementFactor rdf:type owl:ObjectProperty ;
+                                    rdfs:subPropertyOf rdlsap:has .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasEarlyConfirmationTolerance
+rdlsap:hasEarlyConfirmationTolerance rdf:type owl:ObjectProperty ;
+                                     rdfs:subPropertyOf rdlsap:has .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasEarlyDisplacementFactor
+rdlsap:hasEarlyDisplacementFactor rdf:type owl:ObjectProperty ;
+                                  rdfs:subPropertyOf rdlsap:has .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasFailEffect
+rdlsap:hasFailEffect rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf rdlsap:has .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasFailMode
+rdlsap:hasFailMode rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf rdlsap:has .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasGroupOfTasks
+rdlsap:hasGroupOfTasks rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf <http://rds.posccaesar.org/ontology/lis14/rdl/hasInstalled> .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasIDefect
+rdlsap:hasIDefect rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf rdlsap:has .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasItemCategory
+rdlsap:hasItemCategory rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf rdlsap:has .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasModificationFactor
+rdlsap:hasModificationFactor rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf rdlsap:has .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasOpeningHorizon
+rdlsap:hasOpeningHorizon rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf rdlsap:hasModificationFactor .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasSituation
+rdlsap:hasSituation rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf rdlsap:has .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasSourceDocument
+rdlsap:hasSourceDocument rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf rdlsap:has .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasSourceOfRequest
+rdlsap:hasSourceOfRequest rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf rdlsap:hasSourceDocument .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasStatus
+rdlsap:hasStatus rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf rdlsap:has .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasSystemStatus
+rdlsap:hasSystemStatus rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf rdlsap:has .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasType
+rdlsap:hasType rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf rdlsap:has .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasTypeOfActivityOrder
+rdlsap:hasTypeOfActivityOrder rdf:type owl:ObjectProperty ;
+                              rdfs:subPropertyOf rdlsap:has .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasTypeOfGroupOfTasks
+rdlsap:hasTypeOfGroupOfTasks rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf rdlsap:hasTypeOfActivityOrder .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasTypeOfIntervention
+rdlsap:hasTypeOfIntervention rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf rdlsap:has .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasTypeOfMaintenance
+rdlsap:hasTypeOfMaintenance rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf rdlsap:has .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasTypeOfMaintenanceNote
+rdlsap:hasTypeOfMaintenanceNote rdf:type owl:ObjectProperty ;
+                                rdfs:subPropertyOf rdlsap:has .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasTypeOfOrder
+rdlsap:hasTypeOfOrder rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf rdlsap:has .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasUserStatus
+rdlsap:hasUserStatus rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf rdlsap:has .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#lifeTime
+rdlsap:lifeTime rdf:type owl:ObjectProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#managedBy
+rdlsap:managedBy rdf:type owl:ObjectProperty ;
+                 owl:inverseOf rdlsap:manages .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#manages
+rdlsap:manages rdf:type owl:ObjectProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#attendedBy_(3th_level)
+<http:/rdl.petrobras/ontology/sap/rdl_v1.0#attendedBy_(3th_level)> rdf:type owl:ObjectProperty ;
+                                                                   rdfs:subPropertyOf rdlsap:attendedBy .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#attendedBy_(4th_level)
+<http:/rdl.petrobras/ontology/sap/rdl_v1.0#attendedBy_(4th_level)> rdf:type owl:ObjectProperty ;
+                                                                   rdfs:subPropertyOf rdlsap:attendedBy .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#HhEmployee
+rdlsap:HhEmployee rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#HhEmployeeUOM
+rdlsap:HhEmployeeUOM rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#couldBeFixed
+rdlsap:couldBeFixed rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasAbbreviatedName
+rdlsap:hasAbbreviatedName rdf:type owl:DatatypeProperty ;
+                          rdfs:domain <http://rds.posccaesar.org/ontology/lis14/rdl/Object> .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasActualEndDate
+rdlsap:hasActualEndDate rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasActualTotalCosts
+rdlsap:hasActualTotalCosts rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasBriefText
+rdlsap:hasBriefText rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasCTECDate
+rdlsap:hasCTECDate rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasClosingDate
+rdlsap:hasClosingDate rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasCode
+rdlsap:hasCode rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasCreatedDate
+rdlsap:hasCreatedDate rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasCreationDate
+rdlsap:hasCreationDate rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasDescription
+rdlsap:hasDescription rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasDesiredConclusionDate
+rdlsap:hasDesiredConclusionDate rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasDesiredStartDate
+rdlsap:hasDesiredStartDate rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasEndOfMalfunction
+rdlsap:hasEndOfMalfunction rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasExpirationDate
+rdlsap:hasExpirationDate rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasFailureImpactValue
+rdlsap:hasFailureImpactValue rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasFirstRateMaintenance
+rdlsap:hasFirstRateMaintenance rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasIdentification
+rdlsap:hasIdentification rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasImpeditive
+rdlsap:hasImpeditive rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasLastConclusionDate
+rdlsap:hasLastConclusionDate rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasLastFixedDate
+rdlsap:hasLastFixedDate rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasLastMonitoring
+rdlsap:hasLastMonitoring rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasLastUpdateDate
+rdlsap:hasLastUpdateDate rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasLastUpdateDateODS
+rdlsap:hasLastUpdateDateODS rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasListOfTags
+rdlsap:hasListOfTags rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasLocalization
+rdlsap:hasLocalization rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasLongText
+rdlsap:hasLongText rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasMSUCDate
+rdlsap:hasMSUCDate rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasNextPlannedExecutionDate
+rdlsap:hasNextPlannedExecutionDate rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasNumberOfGroupOfTasks
+rdlsap:hasNumberOfGroupOfTasks rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasPHDate
+rdlsap:hasPHDate rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasPriority
+rdlsap:hasPriority rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasSelectionField
+rdlsap:hasSelectionField rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasStartDate
+rdlsap:hasStartDate rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasStartOfMalfunction
+rdlsap:hasStartOfMalfunction rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasTAG
+rdlsap:hasTAG rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasValue
+rdlsap:hasValue rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#hasValueOfImpactoFalha
+rdlsap:hasValueOfImpactoFalha rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#isClosed
+rdlsap:isClosed rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#isMonitoringOverdue
+rdlsap:isMonitoringOverdue rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#isOnScheduledStop
+rdlsap:isOnScheduledStop rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#isOverdue
+rdlsap:isOverdue rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#isPending
+rdlsap:isPending rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#is_SP_NR13
+rdlsap:is_SP_NR13 rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#numberOfMonitoring
+rdlsap:numberOfMonitoring rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#quantityOfPlanItems
+rdlsap:quantityOfPlanItems rdf:type owl:DatatypeProperty .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#scope
+rdlsap:scope rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://purl.obolibrary.org/obo/IAO_0000078
+<http://purl.obolibrary.org/obo/IAO_0000078> rdf:type owl:Class .
+
+
+###  http://rds.posccaesar.org/ontology/lis14/rdl/Artefact
+<http://rds.posccaesar.org/ontology/lis14/rdl/Artefact> rdf:type owl:Class .
+
+
+###  http://rds.posccaesar.org/ontology/lis14/rdl/Dependent
+<http://rds.posccaesar.org/ontology/lis14/rdl/Dependent> rdfs:subClassOf <http://rds.posccaesar.org/ontology/lis14/rdl/Actual> .
+
+
+###  http://rds.posccaesar.org/ontology/lis14/rdl/Object
+<http://rds.posccaesar.org/ontology/lis14/rdl/Object> rdf:type owl:Class .
+
+
+###  http://rds.posccaesar.org/ontology/lis14/rdl/Organization
+<http://rds.posccaesar.org/ontology/lis14/rdl/Organization> rdf:type owl:Class .
+
+
+###  http://rds.posccaesar.org/ontology/lis14/rdl/Site
+<http://rds.posccaesar.org/ontology/lis14/rdl/Site> rdf:type owl:Class .
+
+
+###  http:/rdl.petrobras/ontology/sap/ativo360#Busca_SoftwareArtefact
+ativo360:Busca_SoftwareArtefact rdf:type owl:Class ;
+                                rdfs:subClassOf <http://rds.posccaesar.org/ontology/lis14/rdl/SoftwareArtefact> .
+
+
+###  http:/rdl.petrobras/ontology/sap/ativo360#Environ_SoftwareArtefact
+ativo360:Environ_SoftwareArtefact rdf:type owl:Class ;
+                                  rdfs:subClassOf <http://rds.posccaesar.org/ontology/lis14/rdl/SoftwareArtefact> .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Action
+rdlsap:Action rdf:type owl:Class ;
+              rdfs:subClassOf <http://rds.posccaesar.org/ontology/lis14/rdl/InformationObject> ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty <http://rds.posccaesar.org/ontology/lis14/rdl/partOf> ;
+                                owl:allValuesFrom <http:/rdl.petrobras/ontology/sap/rdl_v1.0#RTI/MEASURE>
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty rdlsap:hasAction ;
+                                owl:allValuesFrom rdlsap:StandardAction
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty rdlsap:hasBriefText ;
+                                owl:allValuesFrom xsd:string
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty rdlsap:hasClosingDate ;
+                                owl:allValuesFrom xsd:dateTime
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty rdlsap:hasLastUpdateDate ;
+                                owl:allValuesFrom xsd:dateTime
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty rdlsap:hasLongText ;
+                                owl:allValuesFrom xsd:string
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty rdlsap:hasStartDate ;
+                                owl:allValuesFrom xsd:dateTime
+                              ] .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Asset
+rdlsap:Asset rdf:type owl:Class ;
+             rdfs:subClassOf <http://www.w3.org/ns/org#Site> .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Business_Unit
+rdlsap:Business_Unit rdf:type owl:Class ;
+                     rdfs:subClassOf <http://www.w3.org/ns/org#OrganizationalUnit> ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty <http://www.w3.org/ns/org#hasSubOrganization> ;
+                                       owl:allValuesFrom rdlsap:Management
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty rdlsap:manages ;
+                                       owl:allValuesFrom rdlsap:Asset
+                                     ] .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Category
+rdlsap:Category rdf:type owl:Class ;
+                rdfs:subClassOf skos:Collection .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Category_MaintenancePlan
+rdlsap:Category_MaintenancePlan rdf:type owl:Class ;
+                                rdfs:subClassOf rdlsap:Category .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Cause
+rdlsap:Cause rdf:type owl:Class ;
+             rdfs:subClassOf <http://rds.posccaesar.org/ontology/lis14/rdl/InformationObject> ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty <http://rds.posccaesar.org/ontology/lis14/rdl/partOf> ;
+                               owl:allValuesFrom <http:/rdl.petrobras/ontology/sap/rdl_v1.0#RTI/MEASURE>
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty rdlsap:hasCause ;
+                               owl:allValuesFrom rdlsap:StandardAction
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty rdlsap:hasBriefText ;
+                               owl:allValuesFrom xsd:string
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty rdlsap:hasLongText ;
+                               owl:allValuesFrom xsd:string
+                             ] .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Center
+rdlsap:Center rdf:type owl:Class ;
+              rdfs:subClassOf <http://www.w3.org/ns/org#OrganizationalUnit> .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Class
+rdlsap:Class rdf:type owl:Class ;
+             rdfs:subClassOf skos:Collection .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Class_MaintenancePlan
+rdlsap:Class_MaintenancePlan rdf:type owl:Class ;
+                             rdfs:subClassOf rdlsap:Class .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Class_TechnicalObject
+rdlsap:Class_TechnicalObject rdf:type owl:Class ;
+                             rdfs:subClassOf rdlsap:Class .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Date
+rdlsap:Date rdf:type owl:Class ;
+            rdfs:subClassOf rdlsap:Thing .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Defect
+rdlsap:Defect rdf:type owl:Class ;
+              rdfs:subClassOf skos:Collection ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty rdlsap:hasCode ;
+                                owl:allValuesFrom xsd:string
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty rdlsap:hasDescription ;
+                                owl:allValuesFrom xsd:string
+                              ] .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#DegreeOfCriticality
+rdlsap:DegreeOfCriticality rdf:type owl:Class ;
+                           rdfs:subClassOf skos:Collection .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Delayed_Confirmation_Tolerance
+rdlsap:Delayed_Confirmation_Tolerance rdf:type owl:Class ;
+                                      rdfs:subClassOf rdlsap:Tolerance .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Delayed_Displacement_Factor
+rdlsap:Delayed_Displacement_Factor rdf:type owl:Class ;
+                                   rdfs:subClassOf rdlsap:Displacement_Factor .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Displacement_Factor
+rdlsap:Displacement_Factor rdf:type owl:Class ;
+                           rdfs:subClassOf rdlsap:Percentual .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Early_Confirmation_Tolerance
+rdlsap:Early_Confirmation_Tolerance rdf:type owl:Class ;
+                                    rdfs:subClassOf rdlsap:Tolerance .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Early_Displacement_Factor
+rdlsap:Early_Displacement_Factor rdf:type owl:Class ;
+                                 rdfs:subClassOf rdlsap:Displacement_Factor .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Equipment
+rdlsap:Equipment rdf:type owl:Class ;
+                 rdfs:subClassOf <http://rds.posccaesar.org/ontology/lis14/rdl/InanimatePhysicalObject> ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty <http://purl.org/net/cartCoord#hasPlacement> ;
+                                   owl:allValuesFrom <http://rds.posccaesar.org/ontology/lis14/rdl/PointInSpace>
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty <http://rds.posccaesar.org/ontology/lis14/rdl/hasPhysicalQuantity> ;
+                                   owl:allValuesFrom <http://rds.posccaesar.org/ontology/lis14/rdl/PhysicalQuantity>
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty <http://rds.posccaesar.org/ontology/lis14/rdl/partOf> ;
+                                   owl:allValuesFrom rdlsap:Platform
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty <http://rds.posccaesar.org/ontology/lis14/rdl/subLocationOf> ;
+                                   owl:allValuesFrom rdlsap:Instalation_Place
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty ativo360:isInScopeOf ;
+                                   owl:allValuesFrom ativo360:Busca_SoftwareArtefact
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty rdlsap:hasTAG ;
+                                   owl:allValuesFrom xsd:string
+                                 ] .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#FailEffect
+rdlsap:FailEffect rdf:type owl:Class ;
+                  rdfs:subClassOf skos:Collection .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#FailMode
+rdlsap:FailMode rdf:type owl:Class ;
+                rdfs:subClassOf skos:Collection ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty rdlsap:hasDescription ;
+                                  owl:allValuesFrom xsd:string
+                                ] .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#FailModeGroup
+rdlsap:FailModeGroup rdf:type owl:Class ;
+                     rdfs:subClassOf skos:Collection ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty rdlsap:hasDescription ;
+                                       owl:allValuesFrom xsd:string
+                                     ] .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Impact_of_Failure
+rdlsap:Impact_of_Failure rdf:type owl:Class ;
+                         rdfs:subClassOf skos:Collection ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty rdlsap:hasDescription ;
+                                           owl:allValuesFrom xsd:string
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty rdlsap:hasValue ;
+                                           owl:allValuesFrom xsd:integer
+                                         ] .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Instalation_Place
+rdlsap:Instalation_Place rdf:type owl:Class ;
+                         rdfs:subClassOf rdlsap:Thing ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty <http://rds.posccaesar.org/ontology/lis14/rdl/hasPhysicalQuantity> ;
+                                           owl:allValuesFrom <http://rds.posccaesar.org/ontology/lis14/rdl/PhysicalQuantity>
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty <http://rds.posccaesar.org/ontology/lis14/rdl/partOf> ;
+                                           owl:allValuesFrom rdlsap:Platform
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty <http://rds.posccaesar.org/ontology/lis14/rdl/subLocationOf> ;
+                                           owl:allValuesFrom rdlsap:Instalation_Place
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty skos:closeMatch ;
+                                           owl:allValuesFrom <http://rds.posccaesar.org/ontology/lis14/rdl/Site>
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty ativo360:isInScopeOf ;
+                                           owl:allValuesFrom ativo360:Busca_SoftwareArtefact
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty rdlsap:hasIdentification ;
+                                           owl:allValuesFrom xsd:string
+                                         ] .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Item
+rdlsap:Item rdf:type owl:Class ;
+            rdfs:subClassOf <http://rds.posccaesar.org/ontology/lis14/rdl/InformationObject> ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty <http://rds.posccaesar.org/ontology/lis14/rdl/partOf> ;
+                              owl:allValuesFrom rdlsap:Maintenance_Note
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty ativo360:isInScopeOf ;
+                              owl:allValuesFrom ativo360:Busca_SoftwareArtefact
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty rdlsap:hasIDefect ;
+                              owl:allValuesFrom rdlsap:Defect
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty rdlsap:hasItemCategory ;
+                              owl:allValuesFrom rdlsap:ItemCategory
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty rdlsap:hasBriefText ;
+                              owl:allValuesFrom xsd:string
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty rdlsap:hasLongText ;
+                              owl:allValuesFrom xsd:string
+                            ] .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#ItemCategory
+rdlsap:ItemCategory rdf:type owl:Class ;
+                    rdfs:subClassOf skos:Collection ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty rdlsap:hasCode ;
+                                      owl:allValuesFrom xsd:string
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty rdlsap:hasDescription ;
+                                      owl:allValuesFrom xsd:string
+                                    ] .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Last_Conclusion_Date
+rdlsap:Last_Conclusion_Date rdf:type owl:Class ;
+                            rdfs:subClassOf rdlsap:Date .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Last_Update_Date
+rdlsap:Last_Update_Date rdf:type owl:Class ;
+                        rdfs:subClassOf rdlsap:Date .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Location_Center
+rdlsap:Location_Center rdf:type owl:Class ;
+                       rdfs:subClassOf rdlsap:Center .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Maintenance_Center
+rdlsap:Maintenance_Center rdf:type owl:Class ;
+                          rdfs:subClassOf rdlsap:Center .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Maintenance_Note
+rdlsap:Maintenance_Note rdf:type owl:Class ;
+                        rdfs:subClassOf <http://rds.posccaesar.org/ontology/lis14/rdl/InformationObject> ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty ativo360:isInScopeOf ;
+                                          owl:allValuesFrom ativo360:Busca_SoftwareArtefact
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:EnvironmentSeverity ;
+                                          owl:allValuesFrom rdlsap:SeverityToEnvironment
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:ProductionSeverity ;
+                                          owl:allValuesFrom rdlsap:SeverityToProduction
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:SecuritySeverity ;
+                                          owl:allValuesFrom rdlsap:SeverityToSecurity
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:attendedBy ;
+                                          owl:allValuesFrom rdlsap:Center
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:attendedBy ;
+                                          owl:allValuesFrom rdlsap:Planning_Center
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:attendedBy ;
+                                          owl:allValuesFrom rdlsap:Planning_Group
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:attendedBy ;
+                                          owl:allValuesFrom rdlsap:Work_Center
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:belongsTo ;
+                                          owl:allValuesFrom rdlsap:FailModeGroup
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:durationOfScheduledStop ;
+                                          owl:allValuesFrom rdlsap:Time
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasFailEffect ;
+                                          owl:allValuesFrom rdlsap:FailEffect
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasFailMode ;
+                                          owl:allValuesFrom rdlsap:FailMode
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasSituation ;
+                                          owl:allValuesFrom rdlsap:Situation_MaintenanceNote
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasSourceDocument ;
+                                          owl:allValuesFrom rdlsap:Maintenance_Note
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasSourceDocument ;
+                                          owl:allValuesFrom <http:/rdl.petrobras/ontology/sap/rdl_v1.0#Order/Maintenance_Service>
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasSourceOfRequest ;
+                                          owl:allValuesFrom rdlsap:SourceOfRequest
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasSystemStatus ;
+                                          owl:allValuesFrom rdlsap:SystemStatus_MaintenanceNote
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasTypeOfIntervention ;
+                                          owl:allValuesFrom rdlsap:Type_Intervention
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasTypeOfMaintenanceNote ;
+                                          owl:allValuesFrom rdlsap:Type_MaintenanceNote
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasTypeOfOrder ;
+                                          owl:allValuesFrom rdlsap:Type_MaintenanceNote
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasUserStatus ;
+                                          owl:allValuesFrom rdlsap:UserStatus_MaintenanceNote
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty <http:/rdl.petrobras/ontology/sap/rdl_v1.0#attendedBy_(3th_level)> ;
+                                          owl:allValuesFrom rdlsap:Management
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty <http:/rdl.petrobras/ontology/sap/rdl_v1.0#attendedBy_(4th_level)> ;
+                                          owl:allValuesFrom rdlsap:Management
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasBriefText ;
+                                          owl:allValuesFrom xsd:string
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasClosingDate ;
+                                          owl:allValuesFrom xsd:dateTime
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasCreationDate ;
+                                          owl:allValuesFrom xsd:dateTime
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasDescription ;
+                                          owl:allValuesFrom xsd:string
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasDesiredStartDate ;
+                                          owl:allValuesFrom xsd:dateTime
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasEndOfMalfunction ;
+                                          owl:allValuesFrom xsd:dateTime
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasExpirationDate ;
+                                          owl:allValuesFrom xsd:dateTime
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasFirstRateMaintenance ;
+                                          owl:allValuesFrom xsd:boolean
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasLastUpdateDateODS ;
+                                          owl:allValuesFrom xsd:dateTime
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasLocalization ;
+                                          owl:allValuesFrom xsd:string
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasLongText ;
+                                          owl:allValuesFrom xsd:string
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasPriority ;
+                                          owl:allValuesFrom xsd:integer
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasStartOfMalfunction ;
+                                          owl:allValuesFrom xsd:dateTime
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:isOnScheduledStop ;
+                                          owl:allValuesFrom xsd:boolean
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:isPending ;
+                                          owl:allValuesFrom xsd:boolean
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:scope ;
+                                          owl:allValuesFrom xsd:string
+                                        ] .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Maintenance_Plan
+rdlsap:Maintenance_Plan rdf:type owl:Class ;
+                        rdfs:subClassOf <http://rds.posccaesar.org/ontology/lis14/rdl/InformationObject> ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty ativo360:isInScopeOf ;
+                                          owl:allValuesFrom ativo360:Busca_SoftwareArtefact
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:cycleTime ;
+                                          owl:allValuesFrom rdlsap:Time
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:has ;
+                                          owl:allValuesFrom rdlsap:Delayed_Displacement_Factor
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:has ;
+                                          owl:allValuesFrom rdlsap:Early_Displacement_Factor
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:has ;
+                                          owl:allValuesFrom rdlsap:Modification_Factor
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:has ;
+                                          owl:allValuesFrom rdlsap:Opening_Horizon
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasCategory ;
+                                          owl:allValuesFrom rdlsap:Category_MaintenancePlan
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasClass ;
+                                          owl:allValuesFrom rdlsap:Class_MaintenancePlan
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasDelayedConfirmationTolerance ;
+                                          owl:allValuesFrom rdlsap:Delayed_Displacement_Factor
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasDelayedDisplacementFactor ;
+                                          owl:allValuesFrom rdlsap:Delayed_Displacement_Factor
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasEarlyConfirmationTolerance ;
+                                          owl:allValuesFrom rdlsap:Early_Displacement_Factor
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasEarlyDisplacementFactor ;
+                                          owl:allValuesFrom rdlsap:Early_Displacement_Factor
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasModificationFactor ;
+                                          owl:allValuesFrom rdlsap:Modification_Factor
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasOpeningHorizon ;
+                                          owl:allValuesFrom rdlsap:Opening_Horizon
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasSituation ;
+                                          owl:allValuesFrom rdlsap:Situation_MaintenancePlan
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasStatus ;
+                                          owl:allValuesFrom rdlsap:Status_MaintenancePlan
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasBriefText ;
+                                          owl:allValuesFrom xsd:string
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasCreationDate ;
+                                          owl:allValuesFrom xsd:dateTime
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasLastConclusionDate ;
+                                          owl:allValuesFrom xsd:dateTime
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasLastUpdateDateODS ;
+                                          owl:allValuesFrom xsd:dateTime
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasLongText ;
+                                          owl:allValuesFrom xsd:string
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasNextPlannedExecutionDate ;
+                                          owl:allValuesFrom xsd:dateTime
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasStartDate ;
+                                          owl:allValuesFrom xsd:dateTime
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:quantityOfPlanItems ;
+                                          owl:allValuesFrom xsd:integer
+                                        ] .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Management
+rdlsap:Management rdf:type owl:Class ;
+                  rdfs:subClassOf <http://www.w3.org/ns/org#OrganizationalUnit> ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty <http://www.w3.org/ns/org#hasSubOrganization> ;
+                                    owl:allValuesFrom rdlsap:Management
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty rdlsap:attends ;
+                                    owl:allValuesFrom rdlsap:Center
+                                  ] .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Modification_Factor
+rdlsap:Modification_Factor rdf:type owl:Class ;
+                           rdfs:subClassOf rdlsap:Number .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Next_Planned_Execution_Date
+rdlsap:Next_Planned_Execution_Date rdf:type owl:Class ;
+                                   rdfs:subClassOf rdlsap:Date .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Number
+rdlsap:Number rdf:type owl:Class ;
+              rdfs:subClassOf <http://rds.posccaesar.org/ontology/lis14/rdl/PhysicalQuantity> .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#ODS_LastUpdateDate
+rdlsap:ODS_LastUpdateDate rdf:type owl:Class ;
+                          rdfs:subClassOf rdlsap:Date .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Opening_Horizon
+rdlsap:Opening_Horizon rdf:type owl:Class ;
+                       rdfs:subClassOf rdlsap:Percentual .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Percentual
+rdlsap:Percentual rdf:type owl:Class ;
+                  rdfs:subClassOf <http://rds.posccaesar.org/ontology/lis14/rdl/PhysicalQuantity> .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Plan_Item
+rdlsap:Plan_Item rdf:type owl:Class ;
+                 rdfs:subClassOf <http://rds.posccaesar.org/ontology/lis14/rdl/InformationObject> ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty <http://rds.posccaesar.org/ontology/lis14/rdl/partOf> ;
+                                   owl:allValuesFrom rdlsap:Maintenance_Plan
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty rdlsap:attendedBy ;
+                                   owl:allValuesFrom rdlsap:Center
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty rdlsap:attendedBy ;
+                                   owl:allValuesFrom rdlsap:Planning_Center
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty rdlsap:attendedBy ;
+                                   owl:allValuesFrom rdlsap:Planning_Group
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty rdlsap:hasGroupOfTasks ;
+                                   owl:allValuesFrom <http:/rdl.petrobras/ontology/sap/rdl_v1.0#Roadmap_Group_(TasksGroup)>
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty rdlsap:hasLastUpdateDate ;
+                                   owl:someValuesFrom xsd:dateTime
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty rdlsap:hasBriefText ;
+                                   owl:allValuesFrom xsd:string
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty rdlsap:hasCreationDate ;
+                                   owl:allValuesFrom xsd:dateTime
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty rdlsap:hasLastUpdateDateODS ;
+                                   owl:allValuesFrom xsd:dateTime
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty rdlsap:hasNumberOfGroupOfTasks ;
+                                   owl:allValuesFrom xsd:integer
+                                 ] .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Planning_Center
+rdlsap:Planning_Center rdf:type owl:Class ;
+                       rdfs:subClassOf rdlsap:Center ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty <http://www.w3.org/ns/org#hasSubOrganization> ;
+                                         owl:allValuesFrom rdlsap:Planning_Group
+                                       ] .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Planning_Group
+rdlsap:Planning_Group rdf:type owl:Class ;
+                      rdfs:subClassOf <http://www.w3.org/ns/org#OrganizationalUnit> .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Platform
+rdlsap:Platform rdf:type owl:Class ;
+                rdfs:subClassOf <http://rds.posccaesar.org/ontology/lis14/rdl/Artefact> ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty <http://rds.posccaesar.org/ontology/lis14/rdl/partOf> ;
+                                  owl:allValuesFrom rdlsap:Business_Unit
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty ativo360:isInScopeOf ;
+                                  owl:allValuesFrom ativo360:Busca_SoftwareArtefact
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty ativo360:isInScopeOf ;
+                                  owl:allValuesFrom ativo360:Environ_SoftwareArtefact
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty rdlsap:attendedBy ;
+                                  owl:allValuesFrom rdlsap:Maintenance_Center
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty rdlsap:managedBy ;
+                                  owl:allValuesFrom rdlsap:Asset
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty rdlsap:managedBy ;
+                                  owl:allValuesFrom rdlsap:Management
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty rdlsap:hasAbbreviatedName ;
+                                  owl:allValuesFrom xsd:string
+                                ] .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Production_Cost_Center
+rdlsap:Production_Cost_Center rdf:type owl:Class ;
+                              rdfs:subClassOf rdlsap:Center .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Scope
+rdlsap:Scope rdf:type owl:Class ;
+             rdfs:subClassOf skos:Collection .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Severity
+rdlsap:Severity rdf:type owl:Class ;
+                rdfs:subClassOf skos:Collection .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#SeverityToEnvironment
+rdlsap:SeverityToEnvironment rdf:type owl:Class ;
+                             rdfs:subClassOf rdlsap:Severity .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#SeverityToProduction
+rdlsap:SeverityToProduction rdf:type owl:Class ;
+                            rdfs:subClassOf rdlsap:Severity .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#SeverityToSecurity
+rdlsap:SeverityToSecurity rdf:type owl:Class ;
+                          rdfs:subClassOf rdlsap:Severity .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Situation
+rdlsap:Situation rdf:type owl:Class ;
+                 rdfs:subClassOf skos:Collection .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Situation_MaintenanceNote
+rdlsap:Situation_MaintenanceNote rdf:type owl:Class ;
+                                 rdfs:subClassOf rdlsap:Situation .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Situation_MaintenancePlan
+rdlsap:Situation_MaintenancePlan rdf:type owl:Class ;
+                                 rdfs:subClassOf rdlsap:Situation .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Situation_Measurement
+rdlsap:Situation_Measurement rdf:type owl:Class ;
+                             rdfs:subClassOf rdlsap:Situation .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Situation_Order
+rdlsap:Situation_Order rdf:type owl:Class ;
+                       rdfs:subClassOf rdlsap:Situation .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Situation_TechnicalObject
+rdlsap:Situation_TechnicalObject rdf:type owl:Class ;
+                                 rdfs:subClassOf rdlsap:Situation .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#SourceOfRequest
+rdlsap:SourceOfRequest rdf:type owl:Class ;
+                       rdfs:subClassOf skos:Collection ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty rdlsap:hasDescription ;
+                                         owl:allValuesFrom xsd:string
+                                       ] .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#StandardAction
+rdlsap:StandardAction rdf:type owl:Class ;
+                      rdfs:subClassOf skos:Collection ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty rdlsap:hasCode ;
+                                        owl:allValuesFrom xsd:string
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty rdlsap:hasDescription ;
+                                        owl:allValuesFrom xsd:string
+                                      ] .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#StandardCause
+rdlsap:StandardCause rdf:type owl:Class ;
+                     rdfs:subClassOf skos:Collection ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty rdlsap:hasCode ;
+                                       owl:allValuesFrom xsd:string
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty rdlsap:hasDescription ;
+                                       owl:allValuesFrom xsd:string
+                                     ] .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#StandardCauseList
+rdlsap:StandardCauseList rdf:type owl:Class ;
+                         rdfs:subClassOf skos:Collection .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Start_Date
+rdlsap:Start_Date rdf:type owl:Class ;
+                  rdfs:subClassOf rdlsap:Date .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Status
+rdlsap:Status rdf:type owl:Class ;
+              rdfs:subClassOf skos:Collection .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Status_MaintenancePlan
+rdlsap:Status_MaintenancePlan rdf:type owl:Class ;
+                              rdfs:subClassOf rdlsap:Status .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#SystemStatus
+rdlsap:SystemStatus rdf:type owl:Class ;
+                    rdfs:subClassOf rdlsap:Status .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#SystemStatus_MaintenanceNote
+rdlsap:SystemStatus_MaintenanceNote rdf:type owl:Class ;
+                                    rdfs:subClassOf rdlsap:SystemStatus .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#SystemStatus_Measurement
+rdlsap:SystemStatus_Measurement rdf:type owl:Class ;
+                                rdfs:subClassOf rdlsap:SystemStatus .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#SystemStatus_Order
+rdlsap:SystemStatus_Order rdf:type owl:Class ;
+                          rdfs:subClassOf rdlsap:SystemStatus .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#SystemStatus_TechnicalObject
+rdlsap:SystemStatus_TechnicalObject rdf:type owl:Class ;
+                                    rdfs:subClassOf rdlsap:SystemStatus .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#TAG
+rdlsap:TAG rdf:type owl:Class ;
+           rdfs:subClassOf <http://rds.posccaesar.org/ontology/lis14/rdl/PrescriptiveObject> .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#TESTE
+rdlsap:TESTE rdf:type owl:Class .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Technical_Characteristics
+rdlsap:Technical_Characteristics rdf:type owl:Class ;
+                                 rdfs:subClassOf <http://rds.posccaesar.org/ontology/lis14/rdl/PhysicalQuantity> ,
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty <http://rds.posccaesar.org/ontology/lis14/rdl/datumUOM> ;
+                                                   owl:allValuesFrom <http://rds.posccaesar.org/ontology/lis14/rdl/UnitOfMeasure>
+                                                 ] ,
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty <http://rds.posccaesar.org/ontology/lis14/rdl/qualityQuantifiedAs> ;
+                                                   owl:allValuesFrom <http://rds.posccaesar.org/ontology/lis14/rdl/QualityDatum>
+                                                 ] ,
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty <http://rds.posccaesar.org/ontology/lis14/rdl/datumValue> ;
+                                                   owl:allValuesFrom xsd:integer
+                                                 ] .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Technical_object
+rdlsap:Technical_object rdf:type owl:Class ;
+                        rdfs:subClassOf skos:Collection ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty <http://rds.posccaesar.org/ontology/lis14/rdl/hasPhysicalQuantity> ;
+                                          owl:allValuesFrom <http://rds.posccaesar.org/ontology/lis14/rdl/PhysicalQuantity>
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty <http://rds.posccaesar.org/ontology/lis14/rdl/partOf> ;
+                                          owl:allValuesFrom <http://rds.posccaesar.org/ontology/lis14/rdl/System>
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty skos:member ;
+                                          owl:allValuesFrom [ rdf:type owl:Class ;
+                                                              owl:unionOf ( rdlsap:Equipment
+                                                                            rdlsap:Instalation_Place
+                                                                          )
+                                                            ]
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasClass ;
+                                          owl:allValuesFrom rdlsap:Class_TechnicalObject
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasSituation ;
+                                          owl:allValuesFrom rdlsap:Situation_TechnicalObject
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasSystemStatus ;
+                                          owl:allValuesFrom rdlsap:SystemStatus_TechnicalObject
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasType ;
+                                          owl:allValuesFrom rdlsap:Type_TechnicalObject
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasUserStatus ;
+                                          owl:allValuesFrom rdlsap:UserStatus_TechnicalObject
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasDescription ;
+                                          owl:allValuesFrom xsd:string
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasFailureImpactValue ;
+                                          owl:allValuesFrom xsd:integer
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasLastUpdateDate ;
+                                          owl:allValuesFrom xsd:dateTime
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasSelectionField ;
+                                          owl:allValuesFrom xsd:string
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:hasValueOfImpactoFalha ;
+                                          owl:allValuesFrom xsd:integer
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rdlsap:is_SP_NR13 ;
+                                          owl:allValuesFrom xsd:boolean
+                                        ] .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Thing
+rdlsap:Thing rdf:type owl:Class .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Time
+rdlsap:Time rdf:type owl:Class ;
+            rdfs:subClassOf <http://rds.posccaesar.org/ontology/lis14/rdl/PhysicalQuantity> .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Tolerance
+rdlsap:Tolerance rdf:type owl:Class ;
+                 rdfs:subClassOf rdlsap:Percentual .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Type
+rdlsap:Type rdf:type owl:Class ;
+            rdfs:subClassOf skos:Collection .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Type_ActivityForOrder
+rdlsap:Type_ActivityForOrder rdf:type owl:Class ;
+                             rdfs:subClassOf rdlsap:Type ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty rdlsap:hasDescription ;
+                                               owl:allValuesFrom xsd:string
+                                             ] .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Type_Intervention
+rdlsap:Type_Intervention rdf:type owl:Class ;
+                         rdfs:subClassOf rdlsap:Type ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty rdlsap:hasValue ;
+                                           owl:allValuesFrom xsd:integer
+                                         ] .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Type_MaintenanceActivity
+rdlsap:Type_MaintenanceActivity rdf:type owl:Class ;
+                                rdfs:subClassOf rdlsap:Type .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Type_MaintenanceNote
+rdlsap:Type_MaintenanceNote rdf:type owl:Class ;
+                            rdfs:subClassOf rdlsap:Type .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Type_Order
+rdlsap:Type_Order rdf:type owl:Class ;
+                  rdfs:subClassOf rdlsap:Type ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty rdlsap:hasDescription ;
+                                    owl:someValuesFrom xsd:string
+                                  ] .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Type_TasksGroup
+rdlsap:Type_TasksGroup rdf:type owl:Class ;
+                       rdfs:subClassOf rdlsap:Type .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Type_TechnicalObject
+rdlsap:Type_TechnicalObject rdf:type owl:Class ;
+                            rdfs:subClassOf rdlsap:Type .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#UserStatus
+rdlsap:UserStatus rdf:type owl:Class ;
+                  rdfs:subClassOf rdlsap:Status .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#UserStatus_MaintenanceNote
+rdlsap:UserStatus_MaintenanceNote rdf:type owl:Class ;
+                                  rdfs:subClassOf rdlsap:UserStatus .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#UserStatus_Measurement
+rdlsap:UserStatus_Measurement rdf:type owl:Class ;
+                              rdfs:subClassOf rdlsap:UserStatus .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#UserStatus_Order
+rdlsap:UserStatus_Order rdf:type owl:Class ;
+                        rdfs:subClassOf rdlsap:UserStatus .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#UserStatus_TechnicalObject
+rdlsap:UserStatus_TechnicalObject rdf:type owl:Class ;
+                                  rdfs:subClassOf rdlsap:UserStatus .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Work_Center
+rdlsap:Work_Center rdf:type owl:Class ;
+                   rdfs:subClassOf rdlsap:Center .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#BACKLOGS_/_DEMANDS_/_MAINTENANCE_STRATEGIES
+<http:/rdl.petrobras/ontology/sap/rdl_v1.0#BACKLOGS_/_DEMANDS_/_MAINTENANCE_STRATEGIES> rdf:type owl:Class ;
+                                                                                        rdfs:subClassOf skos:Collection ,
+                                                                                                        [ rdf:type owl:Restriction ;
+                                                                                                          owl:onProperty <http://purl.obolibrary.org/obo/IAO_0000142> ;
+                                                                                                          owl:allValuesFrom rdlsap:Equipment
+                                                                                                        ] ,
+                                                                                                        [ rdf:type owl:Restriction ;
+                                                                                                          owl:onProperty <http://purl.obolibrary.org/obo/IAO_0000142> ;
+                                                                                                          owl:allValuesFrom rdlsap:Instalation_Place
+                                                                                                        ] ,
+                                                                                                        [ rdf:type owl:Restriction ;
+                                                                                                          owl:onProperty skos:member ;
+                                                                                                          owl:allValuesFrom [ rdf:type owl:Class ;
+                                                                                                                              owl:unionOf ( rdlsap:Maintenance_Note
+                                                                                                                                            rdlsap:Plan_Item
+                                                                                                                                            <http:/rdl.petrobras/ontology/sap/rdl_v1.0#Order/Maintenance_Service>
+                                                                                                                                          )
+                                                                                                                            ]
+                                                                                                        ] ,
+                                                                                                        [ rdf:type owl:Restriction ;
+                                                                                                          owl:onProperty rdlsap:boundedBy ;
+                                                                                                          owl:allValuesFrom rdlsap:Equipment
+                                                                                                        ] ,
+                                                                                                        [ rdf:type owl:Restriction ;
+                                                                                                          owl:onProperty rdlsap:boundedBy ;
+                                                                                                          owl:allValuesFrom rdlsap:Instalation_Place
+                                                                                                        ] .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Order/Maintenance_Service
+<http:/rdl.petrobras/ontology/sap/rdl_v1.0#Order/Maintenance_Service> rdf:type owl:Class ;
+                                                                      rdfs:subClassOf <http://rds.posccaesar.org/ontology/lis14/rdl/InformationObject> ,
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty rdlsap:actualDurationOfService ;
+                                                                                        owl:allValuesFrom rdlsap:Time
+                                                                                      ] ,
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty rdlsap:hasSituation ;
+                                                                                        owl:allValuesFrom rdlsap:Situation_Order
+                                                                                      ] ,
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty rdlsap:hasSystemStatus ;
+                                                                                        owl:allValuesFrom rdlsap:SystemStatus_Order
+                                                                                      ] ,
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty rdlsap:hasTypeOfActivityOrder ;
+                                                                                        owl:allValuesFrom rdlsap:Type_ActivityForOrder
+                                                                                      ] ,
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty rdlsap:hasTypeOfIntervention ;
+                                                                                        owl:allValuesFrom rdlsap:Type_Intervention
+                                                                                      ] ,
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty rdlsap:hasTypeOfMaintenance ;
+                                                                                        owl:allValuesFrom rdlsap:Type_MaintenanceActivity
+                                                                                      ] ,
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty rdlsap:hasTypeOfOrder ;
+                                                                                        owl:allValuesFrom rdlsap:Type_Order
+                                                                                      ] ,
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty rdlsap:hasUserStatus ;
+                                                                                        owl:allValuesFrom rdlsap:UserStatus_Order
+                                                                                      ] ,
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty rdlsap:HhEmployee ;
+                                                                                        owl:allValuesFrom xsd:float
+                                                                                      ] ,
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty rdlsap:HhEmployeeUOM ;
+                                                                                        owl:allValuesFrom xsd:string
+                                                                                      ] ,
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty rdlsap:hasActualEndDate ;
+                                                                                        owl:allValuesFrom xsd:dateTime
+                                                                                      ] ,
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty rdlsap:hasActualTotalCosts ;
+                                                                                        owl:allValuesFrom xsd:float
+                                                                                      ] ,
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty rdlsap:hasBriefText ;
+                                                                                        owl:allValuesFrom xsd:string
+                                                                                      ] ,
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty rdlsap:hasClosingDate ;
+                                                                                        owl:allValuesFrom xsd:dateTime
+                                                                                      ] ,
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty rdlsap:hasDescription ;
+                                                                                        owl:allValuesFrom xsd:string
+                                                                                      ] ,
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty rdlsap:hasExpirationDate ;
+                                                                                        owl:allValuesFrom xsd:dateTime
+                                                                                      ] ,
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty rdlsap:hasImpeditive ;
+                                                                                        owl:allValuesFrom xsd:string
+                                                                                      ] ,
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty rdlsap:hasLastUpdateDateODS ;
+                                                                                        owl:allValuesFrom xsd:dateTime
+                                                                                      ] ,
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty rdlsap:hasLongText ;
+                                                                                        owl:allValuesFrom xsd:string
+                                                                                      ] ,
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty rdlsap:hasStartDate ;
+                                                                                        owl:allValuesFrom xsd:dateTime
+                                                                                      ] ,
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty rdlsap:isPending ;
+                                                                                        owl:allValuesFrom xsd:boolean
+                                                                                      ] .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#RTI/MEASURE
+<http:/rdl.petrobras/ontology/sap/rdl_v1.0#RTI/MEASURE> rdf:type owl:Class ;
+                                                        rdfs:subClassOf <http://rds.posccaesar.org/ontology/lis14/rdl/InformationObject> ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty <http://purl.obolibrary.org/obo/IAO_0000142> ;
+                                                                          owl:allValuesFrom rdlsap:TAG
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty <http://rds.posccaesar.org/ontology/lis14/rdl/partOf> ;
+                                                                          owl:allValuesFrom rdlsap:Item
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty ativo360:isInScopeOf ;
+                                                                          owl:allValuesFrom ativo360:Busca_SoftwareArtefact
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty rdlsap:attendedBy ;
+                                                                          owl:allValuesFrom rdlsap:Center
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty rdlsap:attendedBy ;
+                                                                          owl:allValuesFrom rdlsap:Management
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty rdlsap:attendedBy ;
+                                                                          owl:allValuesFrom rdlsap:Planning_Center
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty rdlsap:degreeOfCriticality ;
+                                                                          owl:allValuesFrom rdlsap:DegreeOfCriticality
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty rdlsap:hasSituation ;
+                                                                          owl:allValuesFrom rdlsap:Situation_Measurement
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty rdlsap:hasSystemStatus ;
+                                                                          owl:allValuesFrom rdlsap:SystemStatus_Measurement
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty rdlsap:hasTypeOfIntervention ;
+                                                                          owl:allValuesFrom rdlsap:Type_Intervention
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty rdlsap:hasUserStatus ;
+                                                                          owl:allValuesFrom rdlsap:UserStatus_Measurement
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty rdlsap:lifeTime ;
+                                                                          owl:allValuesFrom rdlsap:Time
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty rdlsap:couldBeFixed ;
+                                                                          owl:allValuesFrom xsd:boolean
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty rdlsap:hasBriefText ;
+                                                                          owl:allValuesFrom xsd:string
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty rdlsap:hasCTECDate ;
+                                                                          owl:allValuesFrom xsd:dateTime
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty rdlsap:hasClosingDate ;
+                                                                          owl:allValuesFrom xsd:dateTime
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty rdlsap:hasCreatedDate ;
+                                                                          owl:allValuesFrom xsd:dateTime
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty rdlsap:hasDesiredConclusionDate ;
+                                                                          owl:allValuesFrom xsd:dateTime
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty rdlsap:hasExpirationDate ;
+                                                                          owl:allValuesFrom xsd:dateTime
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty rdlsap:hasLastFixedDate ;
+                                                                          owl:allValuesFrom xsd:dateTime
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty rdlsap:hasLastMonitoring ;
+                                                                          owl:allValuesFrom xsd:dateTime
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty rdlsap:hasLastUpdateDateODS ;
+                                                                          owl:allValuesFrom xsd:dateTime
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty rdlsap:hasListOfTags ;
+                                                                          owl:allValuesFrom xsd:string
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty rdlsap:hasLocalization ;
+                                                                          owl:allValuesFrom xsd:string
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty rdlsap:hasLongText ;
+                                                                          owl:allValuesFrom xsd:string
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty rdlsap:hasMSUCDate ;
+                                                                          owl:allValuesFrom xsd:dateTime
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty rdlsap:hasPHDate ;
+                                                                          owl:allValuesFrom xsd:dateTime
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty rdlsap:isClosed ;
+                                                                          owl:allValuesFrom xsd:boolean
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty rdlsap:isMonitoringOverdue ;
+                                                                          owl:allValuesFrom xsd:boolean
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty rdlsap:isOverdue ;
+                                                                          owl:allValuesFrom xsd:boolean
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty rdlsap:isPending ;
+                                                                          owl:allValuesFrom xsd:boolean
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty rdlsap:numberOfMonitoring ;
+                                                                          owl:allValuesFrom xsd:integer
+                                                                        ] ,
+                                                                        [ rdf:type owl:Restriction ;
+                                                                          owl:onProperty rdlsap:scope ;
+                                                                          owl:allValuesFrom xsd:string
+                                                                        ] .
+
+
+###  http:/rdl.petrobras/ontology/sap/rdl_v1.0#Roadmap_Group_(TasksGroup)
+<http:/rdl.petrobras/ontology/sap/rdl_v1.0#Roadmap_Group_(TasksGroup)> rdf:type owl:Class ;
+                                                                       rdfs:subClassOf rdlsap:Thing ,
+                                                                                       [ rdf:type owl:Restriction ;
+                                                                                         owl:onProperty rdlsap:hasTypeOfGroupOfTasks ;
+                                                                                         owl:allValuesFrom rdlsap:Type_TasksGroup
+                                                                                       ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://purl.obolibrary.org/obo/IAO_0000125
+<http://purl.obolibrary.org/obo/IAO_0000125> rdf:type owl:NamedIndividual ,
+                                                      <http://purl.obolibrary.org/obo/IAO_0000078> ;
+                                             rdfs:label "pending final vetting"@en .
+
+
+###  http://w3id.org/readi/rdl/CFIHOS-00000031
+<http://w3id.org/readi/rdl/CFIHOS-00000031> rdf:type owl:NamedIndividual .
+
+
+###  http:/rdl.petrobras/ontology/sap/ativo360#Busca360
+ativo360:Busca360 rdf:type owl:NamedIndividual ,
+                           ativo360:Busca_SoftwareArtefact .
+
+
+###  http:/rdl.petrobras/ontology/sap/ativo360#Environ
+ativo360:Environ rdf:type owl:NamedIndividual ,
+                          ativo360:Environ_SoftwareArtefact .
+
+
+###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi
